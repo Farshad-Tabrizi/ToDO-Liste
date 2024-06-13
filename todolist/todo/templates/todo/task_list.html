@@ -1,0 +1,15 @@
+<h1>Meine To-do-Liste<h1>
+<table>
+    <tr>
+        <th>Themen</th>
+    </tr>
+    {% for task in task %}
+    <tr>
+        <td>{{task.title}}</td>
+        <td><a href="{% url 'task-detail' task.id %}">View</a> </td>
+    </tr>
+    {% empty %}
+    <h3>Kein Thema in der Liste</h3>
+    <a href="">Thema hinzufügen</a>
+    {% endfor %}
+</table>
