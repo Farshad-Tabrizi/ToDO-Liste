@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{%  block content %}
+<div class="header-bar">
+    <h1>Einlogen</h1>
+
+</div>
+<div class="card-body">
+
+        <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="button" type="submit" value="Einlogen">
+
+    <small><p>Noch kein Konto vorhanden? <a href="{% url 'register' %}">Konto erstellen</a></p></small>
+
+    </form>
+
+</div>
+{%  endblock content %}

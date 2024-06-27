@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+
+{%  block content %}
+<form action="" method="post">
+
+{% csrf_token %}
+    <p>Möchten Sie die Aufgabe wirklich löschen?</p>
+    <input type="submit" value="Ja, löschen">
+</form>
+<a href="{% url 'task-list' %}">Nein, Zurück</a>
+{%  endblock content %}

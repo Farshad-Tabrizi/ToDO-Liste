@@ -1,6 +1,11 @@
+{% extends 'main.html' %}
+
+{%  block content %}
 <h1>Aufgabenformular</h1>
 <form action="" method="post">
     {% csrf_token %}
     {{   form.as_p }}
     <input type="submit" value="Sichern">
 </form>
+<a href="{% url 'task-list' %}">Zurück</a>
+{%  endblock content %}
