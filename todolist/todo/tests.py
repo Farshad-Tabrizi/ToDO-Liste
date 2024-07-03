@@ -15,15 +15,15 @@ class TaskTests(TestCase):
                                         completed=False)
 
     def test_task_list_view(self):
-        response = self.client.get(reverse(''))
+        response = self.client.get(reverse('task-list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'templates/task_list.html')
+        self.assertTemplateUsed(response, 'todo/task_list.html')
         self.assertContains(response, self.task.title)
 
     def test_task_detail_view(self):
         response = self.client.get(reverse('task-detail', args=[self.task.id]))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, '/todo/task.html')
+        self.assertTemplateUsed(response, 'todo/task.html')
         self.assertContains(response, self.task.title)
 
     def test_task_create_view(self):
@@ -60,7 +60,7 @@ class AuthTests(TestCase):
     def test_login_view(self):
         User.objects.create_user(username='testuser', password='testpass')
         response = self.client.post(reverse('login'), {'username': 'testuser', 'password': 'testpass'})
-        self.assertEqual(response.status_code, 302)  # Should redirect after successful login
+        self.assertEqual(response.status_code, 302)
 
     def test_register_view(self):
         response = self.client.post(reverse('register'), {
@@ -71,4 +71,4 @@ class AuthTests(TestCase):
         self.assertEqual(response.status_code, 302)  # Should redirect after successful registration
         self.assertTrue(User.objects.filter(username='newuser').exists())
 
-# Remember to adjust 'reverse' arguments to match your actual URL patterns and names.
+
